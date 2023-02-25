@@ -9,6 +9,7 @@ def isPositive(initialValue):
             break
     return initialValue
 
+
 def initialValues(initialValue=None, interest=None):
     if initialValue:
         isPositive(initialValue)
@@ -47,7 +48,7 @@ def total(times, capital_vector, taxation_vector):
         else:
             total_value = iteration(capital_vector[k], total_value, v)
         capital_amount.append(total_value)
-        timestamps.append(k)
+        timestamps.append(k + 1)
     print(
         f"The total value of the investment after {times} successive instalments is US$ {total_value:.2f}."
     )

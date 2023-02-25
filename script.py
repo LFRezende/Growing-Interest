@@ -19,23 +19,7 @@ capital = [
     10000,
     10000,
 ]
-tax = [
-    12.68,
-    12.68,
-    12.68,
-    12.68,
-    12.68,
-    12.68,
-    12.68,
-    12.68,
-    12.68,
-    12.68,
-    12.68,
-    12.68,
-    12.68,
-    12.68,
-    12.68,
-]
+tax = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 times = len(capital)
 final_amount, invested, timestamps = total(
     times, capital_vector=capital, taxation_vector=tax
