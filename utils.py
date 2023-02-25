@@ -23,7 +23,16 @@ def iteration(new_amount, current, tax):
     return amount
 
 
+def cumulative_capital(installments):
+    sum = 0
+    for x in range(0, len(installments)):
+        sum = sum + installments[x]
+    return sum
+
+
 def total(times, capital_vector, taxation_vector):
+    capital_amount = []
+    timestamps = []
     total_value = 0
     if len(capital_vector) != times or len(taxation_vector) != times:
         print("Vectors must length the same, and equal to the number of installments.")
@@ -33,8 +42,9 @@ def total(times, capital_vector, taxation_vector):
             total_value = iteration(capital_vector[k], 0, v)
         else:
             total_value = iteration(capital_vector[k], total_value, v)
-
+        capital_amount.append(total_value)
+        timestamps.append(k)
     print(
         f"The total value of the investment after {times} successive instalments is US$ {total_value:.2f}."
     )
-    return total_value
+    return total_value, capital_amount, timestamps
