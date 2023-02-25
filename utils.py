@@ -1,3 +1,6 @@
+from matplotlib import pyplot as plt
+
+
 def isPositive(initialValue):
     while True:
         if initialValue <= 0:
@@ -5,7 +8,6 @@ def isPositive(initialValue):
         else:
             break
     return initialValue
-
 
 def initialValues(initialValue=None, interest=None):
     if initialValue:
@@ -25,9 +27,11 @@ def iteration(new_amount, current, tax):
 
 def cumulative_capital(installments):
     sum = 0
+    vector_sum = []
     for x in range(0, len(installments)):
         sum = sum + installments[x]
-    return sum
+        vector_sum.append(sum)
+    return sum, vector_sum
 
 
 def total(times, capital_vector, taxation_vector):
@@ -48,3 +52,22 @@ def total(times, capital_vector, taxation_vector):
         f"The total value of the investment after {times} successive instalments is US$ {total_value:.2f}."
     )
     return total_value, capital_amount, timestamps
+
+
+def graphInvestment(timestamps, invested, not_invested, timeunit):
+    gains = diff(invested, not_invested)
+    plt.plot(timestamps, invested, "-bo")
+    plt.plot(timestamps, not_invested, "-ro")
+    plt.plot(timestamps, gains, "-go")
+    plt.title("Investment x Time")
+    plt.xlabel(timeunit)
+    plt.ylabel("Capital")
+    plt.grid()
+    plt.show()
+
+
+def diff(l1, l2):
+    d = []
+    for x in range(0, len(l1)):
+        d.append(l1[x] - l2[x])
+    return d
