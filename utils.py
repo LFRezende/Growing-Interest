@@ -57,13 +57,14 @@ def total(times, capital_vector, taxation_vector):
 
 def graphInvestment(timestamps, invested, not_invested, timeunit):
     gains = diff(invested, not_invested)
-    plt.plot(timestamps, invested, "-bo")
-    plt.plot(timestamps, not_invested, "-ro")
-    plt.plot(timestamps, gains, "-go")
+    plt.plot(timestamps, invested, "-bo", label="Invested Sum")
+    plt.plot(timestamps, not_invested, "-ro", label="Not-Invested Sum")
+    plt.plot(timestamps, gains, "-go", label="Gains")
     plt.title("Investment x Time")
     plt.xlabel(timeunit)
     plt.ylabel("Capital")
     plt.grid()
+    plt.legend(loc="upper left")
     plt.show()
 
 
